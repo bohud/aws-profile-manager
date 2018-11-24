@@ -28,16 +28,16 @@ export default validate(merge(baseConfig, {
     }),
     new webpack.BannerPlugin(
       'require("source-map-support").install();',
-      { raw: true, entryOnly: false }
+      { raw: true, entryOnly: true
     ),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+       
         // Note: Webpack seems to have trouble with certain node depedencies.
         // Disabling gently seems to do the trick.
         // see https://github.com/visionmedia/superagent/wiki/SuperAgent-for-Webpack
         // and https://github.com/felixge/node-formidable/issues/337#issuecomment-153408479
-        'global.GENTLY': false
+        'global.GENTLY': fa
       }
     })
   ],
@@ -45,8 +45,8 @@ export default validate(merge(baseConfig, {
   target: 'electron-main',
 
   node: {
-    __dirname: false,
-    __filename: false
+    __dirname: true
+    __filename: true
   },
   // anything we want to ship in app modules
   externals: [
